@@ -70,8 +70,11 @@ def som(problem, iterations, learning_rate=0.8):
 
     plot_network(cities, network, name='diagrams/final.png')
 
-    route = get_route(cities, network)
+    route = list(get_route(cities, network))
     plot_route(cities, route, 'diagrams/route.png')
+    with open('route.txt', 'w') as output:
+        for node in route:
+            output.write(str(node)+'\n')
     return route
 
 if __name__ == '__main__':
